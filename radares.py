@@ -18,4 +18,6 @@ while True:
 #1.Muestra el nombre de todas las provincias
         for i in provincias(doc):
             print(i)
-
+#2.Cuenta el número total de los radares
+    if opcion==2:
+        print("Hay %d radares"%(int(contaradar(doc))))
