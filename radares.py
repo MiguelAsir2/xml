@@ -33,3 +33,11 @@ while True:
             print(int(doc.xpath(('count(//PROVINCIA[NOMBRE="%s"]/CARRETERA/RADAR)'%prov))))
         else:
             print("La provincia introducida no existe")
+#4. Pide una carretera y muestra las provincias y los radares
+	if opcion==4:
+        carretera=input("Introduce una carretera: ")
+        print("La carretera %s pasa por: "%carretera)
+        for provincia in doc.xpath('//CARRETERA[DENOMINACION="%s"]/../NOMBRE/text()'%carretera):
+            print(provincia)
+            for i in doc.xpath('//PROVINCIA[NOMBRE="%s"]/CARRETERA[DENOMINACION="%s"]/RADAR/text()'%(provincia,carretera)):
+                print(i)
