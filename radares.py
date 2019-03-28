@@ -41,3 +41,20 @@ while True:
             print(provincia)
             for i in doc.xpath('//PROVINCIA[NOMBRE="%s"]/CARRETERA[DENOMINACION="%s"]/RADAR/text()'%(provincia,carretera)):
                 print(i)
+#5. Pedir por teclado una carretera
+    if opcion==5:
+        carretera=input("Introduce una carretera: ")
+        if carretera in doc.xpath('//CARRETERA/DENOMINACION/text()'):
+# cuenta los radares que tiene y 
+            print("La carretera %s tiene %d radares"%(carretera,(int(contarcarretera(carretera,doc)))))
+# muestra las coordenadas de los radares
+            print()
+            print("Los radares se encuentran en los siguientes puntos:")
+            for i,j in zip(longitud(carretera,doc),latitud(carretera,doc)):
+                print("https://www.openstreetmap.org/#map=19/%s/%s"%(i,j))
+        else:
+            print("Esa carretera no existe")
+    if opcion==0:
+        break
+    if opcion>5 or opcion<0:
+        print("Opcion Incorrecta")
